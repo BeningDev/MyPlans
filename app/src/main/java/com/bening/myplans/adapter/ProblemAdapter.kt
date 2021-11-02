@@ -23,7 +23,9 @@ class ProblemAdapter(
             tvDesc.text = data[position].desc
             if ( data[position].status == "active" ) {
                 tvStatusActive.visibility = View.VISIBLE
+                tvStatusSolved.visibility = View.GONE
             } else {
+                tvStatusActive.visibility = View.GONE
                 tvStatusSolved.visibility = View.VISIBLE
             }
 

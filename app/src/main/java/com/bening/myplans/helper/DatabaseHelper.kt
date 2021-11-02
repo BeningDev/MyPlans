@@ -31,6 +31,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
         db.insert("Problem", null, contentValues)
     }
 
+    fun updateProblem(id: Int, Name: String, Description: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("NAME", Name)
+        contentValues.put("DESCRIPTION", Description)
+        db.update("Problem", contentValues, "ID='$id'", null)
+    }
+
     fun addPlan(Name: String, Description: String) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
@@ -84,6 +92,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put("STATUS", "solved")
+        db.update("Problem", contentValues, "ID='$id'", null)
+    }
+
+    fun unSolvedProblem(id: Int) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("STATUS", "active")
         db.update("Problem", contentValues, "ID='$id'", null)
     }
 

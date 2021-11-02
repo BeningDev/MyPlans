@@ -25,10 +25,33 @@ class ShowProblem : AppCompatActivity() {
             etProblemName.setText(dataProblem.name)
             etProblemDesc.setText(dataProblem.desc)
 
+            if ( dataProblem.status == "active" ) {
+                btnSolved.hint = "solved"
+            } else {
+                btnSolved.hint = "unsolved"
+            }
+
             btnSolved.onClick {
-                dbHelper.solvedProblem(dataProblem.id)
-                toast("Problem solved")
+
+                if ( dataProblem.status == "active" ) {
+                    dbHelper.solvedProblem(dataProblem.id)
+                    toast("Problem solved")
+                } else {
+                    dbHelper.unSolvedProblem(dataProblem.id)
+                    toast("Problem unsolved")
+                }
+
                 finish()
+            }
+
+            btnSave.onClick {
+                if (etProblemName.text.toString().isNotEmpty() && etProblemDesc.text.toString().isNotEmpty()) {
+                    dbHelper.updateProblem(dataProblem.id, etProblemName.text.toString(), etProblemDesc.text.toString())
+                    toast("Noted Update")
+                    finish()
+                } else {
+                    toast("Silahkan isi semua kolom")
+                }
             }
 
             btnBack.onClick {
