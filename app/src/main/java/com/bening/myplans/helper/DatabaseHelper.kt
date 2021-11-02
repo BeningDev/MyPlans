@@ -63,6 +63,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
         db.delete("Plan", "ID='$id'", null)
     }
 
+    fun getProblems(id: Int): Cursor {
+        val db = this.writableDatabase
+        val res = db.rawQuery(
+            "SELECT ID, NAME, DESCRIPTION, STATUS FROM 'Problem'",
+            null
+        )
+        return res
+    }
+
     fun finishPlan(id: Int) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
