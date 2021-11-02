@@ -9,7 +9,8 @@ import com.oratakashi.viewbinding.core.binding.recyclerview.viewBinding
 import com.oratakashi.viewbinding.core.tools.onClick
 
 class PlanAdapter(
-    private val onDelete: (DataPlan) -> Unit
+    private val onDelete: (DataPlan) -> Unit,
+    private val onClick: (DataPlan) -> Unit
 ): RecyclerView.Adapter<ViewHolder<ListPlansBinding>>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -22,6 +23,10 @@ class PlanAdapter(
             btnDelete.onClick {
                 onDelete.invoke(data[position])
                 delete(data[position])
+            }
+
+            root.onClick {
+                onClick.invoke(data[position])
             }
         }
     }

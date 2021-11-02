@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyPlans">
         <activity
+            android:name=".main.ShowPlan"
+            android:exported="false" />
+        <activity
             android:name=".ui.SplashScreen"
             android:exported="true">
             <intent-filter>
@@ -20,8 +23,7 @@
         </activity>
         <activity
             android:name=".main.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
