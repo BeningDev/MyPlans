@@ -48,7 +48,7 @@ class MyPlans : Fragment() {
                 )
             }
 
-            val listPlans = dbHelper.getPlans()
+            val listPlans = dbHelper.getPlansActive()
 
             while (listPlans.moveToNext()) {
                 val newPlan = DataPlan(listPlans.getString(0).toInt(), listPlans.getString(1).toString(), listPlans.getString(2).toString())
@@ -68,7 +68,7 @@ class MyPlans : Fragment() {
     override fun onResume() {
         super.onResume()
         adapter.clear()
-        val listPlans = dbHelper.getPlans()
+        val listPlans = dbHelper.getPlansActive()
 
         while (listPlans.moveToNext()) {
             val newPlan = DataPlan(listPlans.getString(0).toInt(), listPlans.getString(1).toString(), listPlans.getString(2).toString())

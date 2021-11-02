@@ -5,13 +5,17 @@ import android.os.Bundle
 import com.bening.myplans.R
 import com.bening.myplans.data.DataPlan
 import com.bening.myplans.databinding.ActivityShowPlanBinding
+import com.bening.myplans.helper.DatabaseHelper
 import com.oratakashi.viewbinding.core.binding.activity.viewBinding
 import com.oratakashi.viewbinding.core.binding.intent.intent
 import com.oratakashi.viewbinding.core.tools.onClick
+import com.oratakashi.viewbinding.core.tools.toast
 
 class ShowPlan : AppCompatActivity() {
 
     private val binding: ActivityShowPlanBinding by viewBinding()
+
+    internal val dbHelper = DatabaseHelper(this)
 
     val dataPlan: DataPlan by intent("data")
 
@@ -25,6 +29,11 @@ class ShowPlan : AppCompatActivity() {
 
             btnBack.onClick {
                 finish()
+            }
+
+            btnFinish.onClick {
+                dbHelper.finishPlan(dataPlan.id)
+                toast("Plan Telah Selesai")
             }
         }
     }
