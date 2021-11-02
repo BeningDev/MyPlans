@@ -7,8 +7,11 @@ import com.bening.myplans.data.DataProblem
 import com.bening.myplans.databinding.ListProblemsBinding
 import com.oratakashi.viewbinding.core.binding.recyclerview.ViewHolder
 import com.oratakashi.viewbinding.core.binding.recyclerview.viewBinding
+import com.oratakashi.viewbinding.core.tools.onClick
 
-class ProblemAdapter: RecyclerView.Adapter<ViewHolder<ListProblemsBinding>>() {
+class ProblemAdapter(
+    private val onClick: (DataProblem) -> Unit
+): RecyclerView.Adapter<ViewHolder<ListProblemsBinding>>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -22,6 +25,10 @@ class ProblemAdapter: RecyclerView.Adapter<ViewHolder<ListProblemsBinding>>() {
                 tvStatusActive.visibility = View.VISIBLE
             } else {
                 tvStatusSolved.visibility = View.VISIBLE
+            }
+
+            root.onClick {
+                onClick.invoke(data[position])
             }
         }
     }

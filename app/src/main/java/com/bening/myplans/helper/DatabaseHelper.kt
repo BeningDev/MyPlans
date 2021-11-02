@@ -80,6 +80,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
         db.update("Plan", contentValues, "ID='$id'", null)
     }
 
+    fun solvedProblem(id: Int) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("STATUS", "solved")
+        db.update("Problem", contentValues, "ID='$id'", null)
+    }
+
     companion object {
 
         private val DB_VERSION = 1

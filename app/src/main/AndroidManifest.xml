@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyPlans">
         <activity
+            android:name=".main.ShowProblem"
+            android:exported="false" />
+        <activity
             android:name=".main.AddProblem"
             android:exported="false" />
         <activity

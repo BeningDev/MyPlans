@@ -37,7 +37,7 @@
         android:background="@drawable/round_bottom"
         android:orientation="vertical"
         android:paddingStart="20dp"
-        android:paddingTop="30dp"
+        android:paddingTop="10dp"
         android:layout_marginTop="20dp"
         android:paddingEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,6 +65,7 @@
             android:text="Desc"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
@@ -76,9 +77,9 @@
             android:layout_marginTop="150dp"
             android:textSize="10sp"
             android:backgroundTint="@color/colorSecondary"
-            android:hint="Add Problem"
+            android:hint="Add Noted"
             android:textColorHint="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnFinish"/>
 
@@ -91,7 +92,7 @@
             android:backgroundTint="@color/colorSecondary"
             android:hint="Finish Plan"
             android:textColorHint="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnAddProblem"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -99,18 +100,20 @@
             android:id="@+id/tvProblem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Problem"
+            android:text="Noted"
+            android:fontFamily="@font/semibold"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAddProblem" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/myProblems"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddProblem"
             app:layout_constraintTop_toBottomOf="@id/tvProblem"
             tools:layout_editor_absoluteX="20dp" />
 

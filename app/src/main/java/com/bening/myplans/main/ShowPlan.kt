@@ -24,7 +24,11 @@ class ShowPlan : AppCompatActivity() {
     val dataPlan: DataPlan by intent("data")
 
     val adapter: ProblemAdapter by lazy {
-        ProblemAdapter()
+        ProblemAdapter { dataProblem ->
+            startActivity(ShowProblem::class.java) {
+                it.putExtra("data", dataProblem)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
