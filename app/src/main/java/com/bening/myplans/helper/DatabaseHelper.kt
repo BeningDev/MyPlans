@@ -26,7 +26,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
         val contentValues = ContentValues()
         contentValues.put("NAME", Name)
         contentValues.put("DESCRIPTION", Description)
-        contentValues.put("STATUS", "start")
+        contentValues.put("STATUS", "active")
         contentValues.put("PlanID", PlanID)
         db.insert("Problem", null, contentValues)
     }
@@ -61,12 +61,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
     fun delPlans(id: Int) {
         val db = this.writableDatabase
         db.delete("Plan", "ID='$id'", null)
+        db.delete("Problem", "PlanID='$id'", null)
     }
 
     fun getProblems(id: Int): Cursor {
         val db = this.writableDatabase
         val res = db.rawQuery(
-            "SELECT ID, NAME, DESCRIPTION, STATUS FROM 'Problem'",
+            "SELECT ID, NAME, DESCRIPTION, STATUS FROM 'Problem' WHERE PlanID='$id'",
             null
         )
         return res

@@ -1,12 +1,12 @@
 package com.bening.myplans.adapter
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bening.myplans.data.DataProblem
 import com.bening.myplans.databinding.ListProblemsBinding
 import com.oratakashi.viewbinding.core.binding.recyclerview.ViewHolder
 import com.oratakashi.viewbinding.core.binding.recyclerview.viewBinding
-import com.oratakashi.viewbinding.core.tools.onClick
 
 class ProblemAdapter: RecyclerView.Adapter<ViewHolder<ListProblemsBinding>>() {
     override fun onCreateViewHolder(
@@ -17,8 +17,11 @@ class ProblemAdapter: RecyclerView.Adapter<ViewHolder<ListProblemsBinding>>() {
     override fun onBindViewHolder(holder: ViewHolder<ListProblemsBinding>, position: Int) {
         with(holder.binding) {
             tvTitle.text = data[position].name
-            btnDelete.onClick {
-                delete(data[position])
+            tvDesc.text = data[position].desc
+            if ( data[position].status == "active" ) {
+                tvStatusActive.visibility = View.VISIBLE
+            } else {
+                tvStatusSolved.visibility = View.VISIBLE
             }
         }
     }

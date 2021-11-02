@@ -34,36 +34,58 @@
                 <TextView
                     android:id="@+id/tvTitle"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:fontFamily="@font/semibold"
-                    android:textColor="@color/black"
                     android:text="Item"
-                    android:textAlignment="textStart"
-                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnEdit"
-                    tools:ignore="RtlCompat" />
+                    app:layout_constraintVertical_bias="0.0"/>
 
-                <ImageView
-                    android:id="@+id/btnEdit"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/ic_edit"
+                <TextView
+                    android:id="@+id/tvStatusActive"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textSize="10sp"
+                    android:text="Active"
+                    android:background="@drawable/round_status_active"
+                    android:padding="4dp"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitle"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnDelete"/>
+                    app:layout_constraintVertical_bias="0.0"/>
 
-                <ImageView
-                    android:id="@+id/btnDelete"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/ic_remove"
+                <TextView
+                    android:id="@+id/tvStatusSolved"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textSize="10sp"
+                    android:text="Solved"
+                    android:background="@drawable/round_status_finish"
+                    android:padding="4dp"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitle"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintVertical_bias="0.0"/>
+
+                <TextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:text="Description"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
