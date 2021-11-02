@@ -53,12 +53,7 @@ class MyPlans : Fragment() {
                 )
             }
 
-            val listPlans = dbHelper.getPlansActive()
-
-            while (listPlans.moveToNext()) {
-                val newPlan = DataPlan(listPlans.getString(0).toInt(), listPlans.getString(1).toString(), listPlans.getString(2).toString())
-                adapter.addData(newPlan)
-            }
+            updateRecycleview()
         }
     }
 
@@ -73,10 +68,14 @@ class MyPlans : Fragment() {
     override fun onResume() {
         super.onResume()
         adapter.clear()
+        updateRecycleview()
+    }
+
+    fun updateRecycleview() {
         val listPlans = dbHelper.getPlansActive()
 
         while (listPlans.moveToNext()) {
-            val newPlan = DataPlan(listPlans.getString(0).toInt(), listPlans.getString(1).toString(), listPlans.getString(2).toString())
+            val newPlan = DataPlan(listPlans.getString(0).toInt(), listPlans.getString(1).toString(), listPlans.getString(2).toString(), listPlans.getString(3).toString())
             adapter.addData(newPlan)
         }
     }

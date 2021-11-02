@@ -7,7 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class DataPlan(
     var id: Int,
     var name: String,
-    var desc: String
+    var desc: String,
+    var status: String
 ) : Parcelable {
     fun simpleDesc(): String {
         return "hay"

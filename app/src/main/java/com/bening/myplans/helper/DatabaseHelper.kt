@@ -59,7 +59,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
     fun getPlansActive(): Cursor {
         val db = this.writableDatabase
         val res = db.rawQuery(
-            "SELECT ID, NAME, DESCRIPTION FROM 'Plan' WHERE STATUS='start'",
+            "SELECT ID, NAME, DESCRIPTION, STATUS FROM 'Plan' WHERE STATUS='start'",
             null
         )
         return res
@@ -68,7 +68,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
     fun getPlansFinish(): Cursor {
         val db = this.writableDatabase
         val res = db.rawQuery(
-            "SELECT ID, NAME, DESCRIPTION FROM 'Plan' WHERE STATUS='finish'",
+            "SELECT ID, NAME, DESCRIPTION, STATUS FROM 'Plan' WHERE STATUS='finish'",
             null
         )
         return res
@@ -93,6 +93,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put("STATUS", "finish")
+        db.update("Plan", contentValues, "ID='$id'", null)
+    }
+
+    fun unFinishPlan(id: Int) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("STATUS", "start")
         db.update("Plan", contentValues, "ID='$id'", null)
     }
 

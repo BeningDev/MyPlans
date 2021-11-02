@@ -39,13 +39,24 @@ class ShowPlan : AppCompatActivity() {
             tvTitle.setText(dataPlan.name)
             tvDesc.setText(dataPlan.desc)
 
+            if ( dataPlan.status != "finish" ) {
+                btnFinish.hint = "Finish Plan"
+            } else {
+                btnFinish.hint = "Un finish Plan"
+            }
+
             btnBack.onClick {
                 finish()
             }
 
             btnFinish.onClick {
-                dbHelper.finishPlan(dataPlan.id)
-                toast("Plan Telah Selesai")
+                if ( dataPlan.status != "finish" ) {
+                    dbHelper.finishPlan(dataPlan.id)
+                    toast("Plan Telah Selesai")
+                } else {
+                    dbHelper.unFinishPlan(dataPlan.id)
+                    toast("Plan belum ter-selesai")
+                }
             }
 
             btnAddProblem.onClick {
