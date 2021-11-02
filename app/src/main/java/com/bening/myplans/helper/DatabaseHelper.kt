@@ -48,6 +48,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
         db.insert("Plan", null, contentValues)
     }
 
+    fun updatePlan(id: Int, Name: String, Description: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("NAME", Name)
+        contentValues.put("DESCRIPTION", Description)
+        db.update("Plan", contentValues, "ID='$id'", null)
+    }
+
     fun getPlansActive(): Cursor {
         val db = this.writableDatabase
         val res = db.rawQuery(

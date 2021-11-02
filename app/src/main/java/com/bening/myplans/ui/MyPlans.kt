@@ -12,6 +12,7 @@ import com.bening.myplans.adapter.PlanAdapter
 import com.bening.myplans.data.DataPlan
 import com.bening.myplans.databinding.FragmentMyPlansBinding
 import com.bening.myplans.helper.DatabaseHelper
+import com.bening.myplans.main.EditPlan
 import com.bening.myplans.main.ShowPlan
 import com.oratakashi.viewbinding.core.binding.fragment.viewBinding
 import com.oratakashi.viewbinding.core.tools.startActivity
@@ -26,6 +27,10 @@ class MyPlans : Fragment() {
 
     val adapter: PlanAdapter by lazy {
         PlanAdapter ({ dataPlan ->
+            startActivity(EditPlan::class.java) {
+                it.putExtra("data", dataPlan)
+            }
+        },{ dataPlan ->
             dbHelper.delPlans(dataPlan.id)
         }, { dataPlan ->  
             startActivity(ShowPlan::class.java) {
